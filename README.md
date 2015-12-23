@@ -41,7 +41,7 @@ export default class GruAspect extends Aspect {
 In `gru.js`:
 ```javascript
 import Aspect from 'es7-aspect';
-import FooAspect from './gru-aspect';
+import GruAspect from './gru-aspect';
 
 @Aspect.use(GruAspect)
 export default class Gru {
