@@ -1,6 +1,6 @@
 {
   "name": "es7-aspect",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A simple aspect-oriented programming library in ECMAScript 7",
   "main": "dist/aspect.js",
   "scripts": {
