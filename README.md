@@ -1,4 +1,6 @@
 # ES7-Aspect
+[![Build Status](https://travis-ci.org/lafickens/es7-aspect.svg)](https://travis-ci.org/lafickens/es7-aspect)
+[![npm version](https://badge.fury.io/js/es7-aspect.svg)](https://badge.fury.io/js/es7-aspect)
 
 This library provides simple aspect oriented programming features in javascript using ES7 decorators.
 
