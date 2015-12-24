@@ -26,43 +26,55 @@ var Aspect = (function () {
   _createClass(Aspect, [{
     key: 'wrapFunction',
     value: function wrapFunction(fun) {
-      if ('undefined' === typeof this.functionAspectsMap || 'undefined' === typeof this.functionAspectsMap[fun.name]) return fun;else return (function () {
-        var _this = this;
+      var _this2 = this;
 
-        var aspectsMap = this.functionAspectsMap[fun.name];
-        var args = Array.prototype.slice.call(arguments);
-        var result = undefined;
+      if ('undefined' === typeof this.functionAspectsMap || 'undefined' === typeof this.functionAspectsMap[fun.name]) return fun;else {
+        var _ret = (function () {
+          var _this = _this2;
+          var retval = function retval() {
+            var aspectsMap = _this.functionAspectsMap[fun.name];
+            var args = Array.prototype.slice.call(arguments);
+            var result = undefined;
 
-        if ('undefined' !== typeof aspectsMap[_aspects.BEFORE]) {
-          aspectsMap[_aspects.BEFORE].forEach(function (beforeAspectFunName) {
-            return _this[beforeAspectFunName].apply(_this, _toConsumableArray(args));
-          });
-        }
-        if ('undefined' !== typeof aspectsMap[_aspects.INTERCEPT]) {
-          if (aspectsMap[_aspects.INTERCEPT].length > 1) {
-            throw new Error('Multiple interceptions: There can be one and only one interceptions');
-          }
+            if ('undefined' !== typeof aspectsMap[_aspects.BEFORE]) {
+              aspectsMap[_aspects.BEFORE].forEach(function (beforeAspectFunName) {
+                return _this[beforeAspectFunName].apply(_this, _toConsumableArray(args));
+              });
+            }
+            if ('undefined' !== typeof aspectsMap[_aspects.INTERCEPT]) {
+              if (aspectsMap[_aspects.INTERCEPT].length > 1) {
+                throw new Error('Multiple interceptions: There can be one and only one interceptions');
+              }
 
-          var shouldContinue = true;
-          var resolve = function resolve() {
-            return shouldContinue = true;
+              var shouldContinue = true;
+              var resolve = function resolve() {
+                return shouldContinue = true;
+              };
+              var reject = function reject(val) {
+                shouldContinue = false;
+                if (val) result = val();
+              };
+              var interceptAspectFunName = aspectsMap[_aspects.INTERCEPT][0];
+              _this[interceptAspectFunName].apply(_this, [resolve, reject].concat(_toConsumableArray(args)));
+              if (!shouldContinue) return result;
+            }
+            result = fun.apply(undefined, _toConsumableArray(args));
+            if ('undefined' !== typeof aspectsMap[_aspects.AFTER]) {
+              aspectsMap[_aspects.AFTER].forEach(function (afterAspectFunName) {
+                return _this[afterAspectFunName].apply(_this, _toConsumableArray(args));
+              });
+            }
+            return result;
           };
-          var reject = function reject(val) {
-            shouldContinue = false;
-            if (val) result = val();
+          for (var propName in fun) {
+            retval[propName] = fun[propName];
+          }return {
+            v: retval
           };
-          var interceptAspectFunName = aspectsMap[_aspects.INTERCEPT][0];
-          this[interceptAspectFunName].apply(this, [resolve, reject].concat(_toConsumableArray(args)));
-          if (!shouldContinue) return result;
-        }
-        result = fun.apply(undefined, _toConsumableArray(args));
-        if ('undefined' !== typeof aspectsMap[_aspects.AFTER]) {
-          aspectsMap[_aspects.AFTER].forEach(function (afterAspectFunName) {
-            return _this[afterAspectFunName].apply(_this, _toConsumableArray(args));
-          });
-        }
-        return result;
-      }).bind(this);
+        })();
+
+        if (typeof _ret === 'object') return _ret.v;
+      }
     }
   }, {
     key: 'applyToClass',

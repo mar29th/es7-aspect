@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node_modules/gulp/bin/gulp.js",
     "prepublish": "node_modules/gulp/bin/gulp.js publish",
-    "test": "node_modules/gulp/bin/gulp.js test; $npm_config_cwd/node_modules/mocha/bin/mocha test-transpiled/**/*"
+    "test": "node_modules/gulp/bin/gulp.js test; node_modules/mocha/bin/mocha test-transpiled/**/*"
   },
   "repository": {
     "type": "git",

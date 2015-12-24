@@ -5,11 +5,13 @@ import TestAspect from './test-aspect';
 @Aspect.use(TestAspect)
 export default class TestClass {
 
-  testBefore(lst) {}
+  constructor() { this._count = 0; }
 
-  testAfter(lst) {}
+  testBefore(lst) { this.count++; }
 
-  testIntercept(lst) {}
+  testAfter(lst) { this.count++; }
 
-  testMixed() {}
+  testIntercept(lst) { this.count++; }
+
+  testMixed() { this.count++; }
 }
