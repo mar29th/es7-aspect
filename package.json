@@ -4,8 +4,8 @@
   "description": "A simple aspect-oriented programming library in ECMAScript 7",
   "main": "dist/aspect.js",
   "scripts": {
-    "build": "node_modules/gulp/bin/gulp.js",
-    "test": "node_modules/gulp/bin/gulp.js test; mocha test-transpiled/**/*"
+    "install": "node_modules/gulp/bin/gulp.js default",
+    "test": "node_modules/gulp/bin/gulp.js test; node_modules/mocha/bin/mocha test-transpiled/**/*"
   },
   "repository": {
     "type": "git",
