@@ -10,6 +10,15 @@ gulp.task('default', function () {
   .pipe(gulp.dest('dist'));
 });
 
+gulp.task('publish', function () {
+  gulp.src('lib/**/*')
+  .pipe(babel({
+    "blacklist": [],
+    "stage": 0
+  }))
+  .pipe(gulp.dest('bin'));
+});
+
 gulp.task('test', ['default'], function () {
   gulp.src('test/**/*')
   .pipe(babel({

@@ -2,10 +2,11 @@
   "name": "es7-aspect",
   "version": "1.1.0",
   "description": "A simple aspect-oriented programming library in ECMAScript 7",
-  "main": "dist/aspect.js",
+  "main": "bin/aspect.js",
   "scripts": {
-    "install": "node_modules/gulp/bin/gulp.js default",
-    "test": "node_modules/gulp/bin/gulp.js test; node_modules/mocha/bin/mocha test-transpiled/**/*"
+    "build": "node_modules/gulp/bin/gulp.js",
+    "prepublish": "node_modules/gulp/bin/gulp.js publish",
+    "test": "node_modules/gulp/bin/gulp.js test; $npm_config_cwd/node_modules/mocha/bin/mocha test-transpiled/**/*"
   },
   "repository": {
     "type": "git",
