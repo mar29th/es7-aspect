@@ -6,6 +6,8 @@ This library provides simple aspect oriented programming features in javascript 
 
 It is a derivative of [Board](http://devpost.com/software/billboard-czkuq8) project.
 
+__Please note that this library is not async-compliant, i.e. the activities in an Aspect class cannot contain any callbacks or promises.__ It is intended to do simple runtime checks and should be used as last resort.
+
 
 ## Sample Usage
 
@@ -14,6 +16,8 @@ In `gru-aspect.js`:
 import Aspect from 'es7-aspect';
 
 export default class GruAspect extends Aspect {
+  //Once again, no async calls in any of these functions
+
   @Aspect.before('stealsTheMoon')
   eatsABanana(bananas) {
     if (bananas) {
