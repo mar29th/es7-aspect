@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lafickens/es7-aspect.git"
+    "url": "git+https://github.com/mar29th/es7-aspect.git"
   },
-  "author": "lafickens",
+  "author": "mar29th",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lafickens/es7-aspect/issues"
+    "url": "https://github.com/mar29th/es7-aspect/issues"
   },
-  "homepage": "https://github.com/lafickens/es7-aspect#readme",
+  "homepage": "https://github.com/mar29th/es7-aspect#readme",
   "devDependencies": {
     "babel": "^5.8.34",
     "gulp": "^3.9.0",

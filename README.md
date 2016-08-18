@@ -6,7 +6,7 @@ This library provides simple aspect oriented programming features in javascript 
 
 It is a derivative of [Board](http://devpost.com/software/billboard-czkuq8) project.
 
-__Please note that this library is not async-compliant, i.e. the activities in an Aspect class cannot contain any callbacks or promises.__ It is intended to do simple runtime checks and should be used as last resort.
+Please note that this library is intended to do simple runtime checks and should be used as the last resort. __It is not async-compatible, i.e. the activities in an Aspect class cannot contain any callbacks or promises, whereas the original function can be async.__
 
 
 ## Sample Usage
